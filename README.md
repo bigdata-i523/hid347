@@ -10,7 +10,7 @@
 owner:
     hid: 347
     name: Jeramy Townsley
-    url: https://github.com/bigdata-i523/sample-hid000
+    url: https://github.com/bigdata-i523/hid347
 ```
 
 # Paper 1
