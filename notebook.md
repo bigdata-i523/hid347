@@ -2,7 +2,7 @@
 
 * 8/29 Signed up a week after class started
 * 8/30 Read all of the class overview, watched the Intro videos, accessed Piazza, signed up for Github, Chameleon, Futuresystems
-* 9/15 Started the class notebook on Github
+* 9/15 Started this class notebook on Github
 
 # Theory
 
