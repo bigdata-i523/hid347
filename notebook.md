@@ -7,7 +7,7 @@
 # Theory
 
 * 9/5-9/7  Read & watched all videos in these sections (3.1,3.2,3.10): Introduction, Overview, Web Search/Text Mining
-* 9/17-9/18 Watched all videos in 3.3: Big Data Use Cases
+* 9/17-9/18 Watched all videos in 3.3 & 3.7: Big Data Use Cases & Radar Case Studies
 
 # Practice
 
