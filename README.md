@@ -24,9 +24,9 @@ paper1:
    - 347
    title: Sociological Applications of Big Data
    abstract: This paper explores sociological applications of big data
-#   url: 
+   url: TBD 
    type: latex
-   
    status: in progress
- ```
+   chapter: Lifestyle
+```
    
