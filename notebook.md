@@ -21,4 +21,4 @@
 
 * 9/1 Installed Latex & jabref
 * 9/10 Had Paper 1 topic approved.  Began researching appropriate journal articles, have found 10 that seem relevant & useful
-* 10/4-10/7 Wrote Paper 1.  Learned how to use Sharelatex, transfer a MS Word document to latex, use jabref & connect that to the latex document
+* 10/4-10/7 Wrote Paper 1.  Learned how to use Sharelatex, transfer a MS Word document to latex, use jabref & connect that to the latex document.  Found 6 additional articles useful for the paper.
