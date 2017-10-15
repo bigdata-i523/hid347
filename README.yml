@@ -1,0 +1,16 @@
+---
+owner:
+    hid: 347
+    name: Jeramy Townsley
+    url: https://github.com/bigdata-i523/hid347
+paper1:
+    abstract: This paper explores sociological applications of big data
+    author:
+        - Jeramy Townsley
+    chapter: Lifestyle
+    hid:
+        - 347
+    status: in progress
+    title: Sociological Applications of Big Data
+    type: latex
+    url: TBD
