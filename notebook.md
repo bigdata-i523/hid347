@@ -9,6 +9,7 @@
 * 9/5-9/7  Read & watched all videos in these sections (3.1,3.2,3.10): Introduction, Overview, Web Search/Text Mining
 * 9/17-9/18 Watched all videos in 3.3 & 3.7: Big Data Use Cases & Radar Case Studies
 * 9/23-24 Watched all videos in 3.4 & 3.6: Physics & Healthcare
+* 10/13-10/14 Finished watching theory videos: Sensors, Commerce, Sports
 
 
 # Practice
