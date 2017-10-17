@@ -3,6 +3,9 @@ owner:
     hid: 347
     name: Jeramy Townsley
     url: https://github.com/bigdata-i523/hid347
+    Latitude: 39.773739
+    Longitude: -86.175216
+    City: Indianapolis, IN, USA
 paper1:
     abstract: This paper explores sociological applications of big data
     author:
@@ -10,7 +13,7 @@ paper1:
     chapter: Lifestyle
     hid:
         - 347
-    status: in progress
+    status: 100%
     title: Sociological Applications of Big Data
     type: latex
     url: TBD
