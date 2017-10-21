@@ -17,12 +17,14 @@
 * 9/2 Installed Virtualbox, Ubuntu & Python 2 & 3 via pyenv
 * 9/9 Bought Raspberry Pi and required accessories.  Installed NOOBS
 * 9/19-9/23 Started learning how to use Linux.  
+* 10/20 Started learning Python.  Used Ubuntu installed on Virtualbox on Windows 10
 
 # Writing
 
 * 9/1 Installed Latex & jabref
 * 9/10 Had Paper 1 topic approved.  Began researching appropriate journal articles, have found 10 that seem relevant & useful
 * 10/4-10/7 Wrote Paper 1.  Learned how to use Sharelatex, transfer a MS Word document to latex, use jabref & connect that to the latex document.  Found 6 additional articles useful for the paper.
+* 10/20-21  Fixed noted issues with Paper 1.  Created folder for Paper 2
 
 # Location
 * Address: 425 University Blvd, Indianapolis, IN 46202
