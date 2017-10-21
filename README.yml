@@ -17,3 +17,14 @@ paper1:
     title: Sociological Applications of Big Data
     type: latex
     url: TBD
+paper2:
+    abstract: This paper explores big data methods used by sociology
+    author:
+        - Jeramy Townsley
+    chapter: Lifestyle
+    hid:
+        - 347
+    status: In Progress
+    title: Sociological Methods of Big Data
+    type: latex
+    url: TBD
