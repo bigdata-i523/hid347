@@ -25,6 +25,7 @@
 * 9/10 Had Paper 1 topic approved.  Began researching appropriate journal articles, have found 10 that seem relevant & useful
 * 10/4-10/7 Wrote Paper 1.  Learned how to use Sharelatex, transfer a MS Word document to latex, use jabref & connect that to the latex document.  Found 6 additional articles useful for the paper.
 * 10/20-21  Fixed noted issues with Paper 1.  Created folder for Paper 2
+* 10/25-29  Explored Final Project topic and was approved.  Gathered resources for Paper 2 and Final Project.  
 
 # Location
 * Address: 425 University Blvd, Indianapolis, IN 46202
