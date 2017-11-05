@@ -18,6 +18,7 @@ paper1:
     type: latex
     url: TBD
 paper2:
+    review: Nov 6 2017
     abstract: This paper explores big data methods used by sociology
     author:
         - Jeramy Townsley
