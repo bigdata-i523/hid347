@@ -1,1 +1,45 @@
 
+\documentclass[sigconf]{acmart}
+
+\usepackage{todonotes}
+\usepackage{hyperref}
+
+\usepackage{endfloat}
+\renewcommand{\efloatseparator}{\mbox{}} % no new page between figures
+
+\usepackage{booktabs} % For formal tables
+
+\settopmatter{printacmref=false} % Removes citation information below abstract
+\renewcommand\footnotetextcopyrightpermission[1]{} % removes footnote with conference information in first column
+\pagestyle{plain} % removes running headers
+
+\begin{document}
+\title{Mapping Police Killing of Citizens in the United States}
+
+\author{Jeramy Townsley}
+\orcid{1234-5678-9012}
+\affiliation{%
+  \institution{IUPUI}
+  \streetaddress{425 University Ave}
+  \city{Indianapolis} 
+  \state{Indiana} 
+  \postcode{46202}
+}
+\email{jtownsle@indiana.edu}
+
+
+\begin{abstract}
+With the rise of camera phones that allows citizens to videotape law enforcement brutality against citizens, and the ability to immediately make those videos public through social media, there has been an increased awareness of police killings of citizens, and a number of systematic attempts to document these events, since there is no government database that has been shown to be credible on this issue. These events can be mapped at the county level (3,143 counties in the US are listed in the 2015 Census Tiger Shapefiles) with the open source software QGIS.  Further, demographic and economic data gathered by the Census at the county level (5-year estimates as of 2015 with the American Community Survey) can be collected and tested against the police-killings data to determine if a regression model can be used to describe a significant pattern among these variables. 
+\end{abstract}
+
+\keywords{i523, hid347, police brutality, regression, gis mapping, census, zero-inflated models}
+
+\maketitle
+
+\section{Introduction}
+
+\section{Conclusion}
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{report} 
+
+\end{document}
