@@ -27,6 +27,7 @@
 * 10/20-21  Fixed noted issues with Paper 1.  Created folder for Paper 2
 * 10/25-29  Explored Final Project topic and was approved.  Gathered resources for Paper 2 and Final Project.  
 * 11/1-11/5 Finished Paper 2.  Started data analysis for final project.
+* 11/6-11/16 Gathered literature review for Final Project.  Gathered & cleaned data for analysis.  Created maps using QGIS.  Finalized regression analysis model & regression diagnostics using R.  
 
 # Location
 * Address: 425 University Blvd, Indianapolis, IN 46202
