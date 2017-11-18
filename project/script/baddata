@@ -1,0 +1,64 @@
+The data from MappingPoliceViolence had a number of errors--no county listed, or counties associated with the wrong state.
+I manually tracked down 60 bad data points and corrected them.  The following are what I corrected.
+
+Victim’s Name,Probable error on web site,Correct information
+Henry Rivera Sr.,Yamhill County, 97114,Bernalillo County, NM, 87114
+Jack Burris,Chicago County,Cook County
+Don Johnson,Acadiana County,Acadia County
+Darius Wimberly,Suffolk County,Berrien County
+Christopher Olmstead,New Orleans Parish,Orleans Parish
+Joseph Tassinari,Mariopa County,Maricopa County
+Adam O'Neal Reinhart,Maracopa County,Maricopa County
+Joseph Duran,Amadour County,Amador County
+Benjamin Quezada,Baytown County,Harris County
+Richard Thomas Bergeron,Bedford City County,Bedford County
+Robert Guerin,Chavez County,Chaves County
+Mario A. Jordan,Chesapeake County,Chesapeake City
+Gary Timmie Collins,OH state,OK state
+Michael Daryle Rose,Cococino County,Coconino County
+Kevin Bajoie,East Baton Rogue County,East Baton Rouge County
+Anthony L. Aguilar Sr.,Du Page County,DuPage County
+Donovan Thomas,Gratiot County,St Louis County
+Rudolph Smith,MI state,MS state
+Tony Terrell Robinson,Madison County,Dane County
+Ryan Dean Burgess,Mojave County,Mohave County
+Jeremy Elliott,Oskaloosa County,Okaloosa County
+Jessica Hernandez,Park Hill County,Denver County
+David Parker,NJ state,OH state
+Christopher Leo Knight,Salt Lake City County,Salt Lake County
+Several names,San Bernadino County,San Bernardino County
+Isaac Jimenez,Alton (city), IL state,Affton (city), MO state
+Scott Hall,Van Dandt County,Van Zandt County
+Samuel Forgy,Whittier County,Boulder County
+William Dwayne Darby,No county listed,Stewart
+Troy Bateman,No county listed,Boone
+Jamal Parks,No county listed,Lake
+Jonathan M. Young,No county listed,Columbia
+Ashley Sides,No county listed,Montgomery
+Gary Don Lafon,No county listed,Wood
+Adrian Joseph Shaffer,No county listed,Boulder
+Tommy Seneca,No county listed,Iberville
+William Ferguson,No county listed,Maricopa
+Jamil Alejandro Valladares,No county listed,Hillsborough
+David Shane Anderson,No county listed,Salt Lake
+Preston Paul Perez,No county listed,Lafourche
+Gayneaux Paul Trahan,No county listed,St. Mary
+Kimberly K. Wyatt,No county listed,Lane
+Francis Hartnett,No county listed,Ocean
+Derry Eugene Touchstone,No county listed,Early
+Cameron Davis Long,No county listed,Leon
+Stephen L. Tooson,No county listed,Jefferson
+Michael Lee Marshall,No county listed,Denver
+Jasper Levi Adams,No county listed,Marion
+Charles A. Pettit,No county listed,Oklahoma
+Jeremy Galvez,No county listed,Seminole
+Mario Perdigone,No county listed,Nueces
+Joel Lopes,No county listed,Sierra
+Kenneth Darryl Schick,No county listed,Shawnee
+Silviano Ortiz,No county listed,Cameron
+Rayshaun Cole,No county listed,San Diego
+Jeffrey Womack,No county listed,Harris
+Martin Ryans,No county listed,Harris
+Michelle Marie Burg,No county listed,Collier
+Bin Christopher Williams,No county listed,Natrona
+Wendy Lawrence,No county listed,Hillsborough
