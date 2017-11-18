@@ -5,7 +5,13 @@ library(gamlss);library(countreg); library(MASS);library(readr);library(car); li
 
 ######################################################
 # Get data
+# demographic variables from American Community Survey (US Census, 5-yr estimate, 2015)
+#  https://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml
+# voting data from https://raw.githubusercontent.com/mkearney/presidential_election_county_results_2016/master/pres.elect16.results.dec9.csv
+# Original police violence data from https://mappingpoliceviolence.org/
+# police killing data had to be extensively cleaned & corrected (60 bad counties)
 ######################################################
+
 getdata <- getURL("https://raw.githubusercontent.com/bigdata-i523/hid347/master/project/script/data1.csv")
 data1 <- read.csv(text = getdata)
 dt1<-data1[complete.cases(data1),]
