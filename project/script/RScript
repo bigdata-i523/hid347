@@ -1,7 +1,8 @@
 ######################################################
 # import libraries
 ######################################################
-library(gamlss);library(countreg); library(MASS);library(readr);library(car); library(mgcv);library(RCurl)
+library(gamlss);library(countreg); library(MASS)
+library(readr);library(car); library(mgcv);library(RCurl)
 
 ######################################################
 # Get data
