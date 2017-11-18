@@ -6,7 +6,8 @@ library(gamlss);library(countreg); library(MASS);library(readr);library(car); li
 ######################################################
 # Get data
 ######################################################
-data1 <- read_delim("C:/R/BigData/FinalProject/data1.txt", "\t", escape_double = FALSE, trim_ws = TRUE)
+getdata <- getURL("https://raw.githubusercontent.com/bigdata-i523/hid347/master/project/script/data1.csv")
+data1 <- read.csv(text = getdata)
 dt1<-data1[complete.cases(data1),]
 
 ######################################################
