@@ -1,33 +1,59 @@
+######################################################
+# import libraries
+######################################################
 library(gamlss);library(countreg); library(MASS);library(readr);library(car); library(mgcv)
 
+######################################################
 # Get data
+######################################################
 data1 <- read_delim("C:/R/BigData/FinalProject/data1.txt", "\t", escape_double = FALSE, trim_ws = TRUE)
 dt1<-data1[complete.cases(data1),]
 
-# Get 3 models & summaries: Final model (4 IVs), full model (all 12 IVs) & partial model (6 IVs)
-finmod<-gamlss(killed ~ log(pop15)+ emp15 +clinton16+ pov15, data=dt1,family=NBI) # removed p>.01, now all vif<2.5
-midmod<-gamlss(killed ~ log(pop15)+ emp15 +clinton16+ pov15 + rural15 + bel10k15, data=dt1,family=NBI) # removed p>.05 and vif>10
-fullmod2<-gamlss(killed ~ log(pop15)+ emp15 +clinton16+ pov15 + rural15 + bel10k15 + mdhinc15+ab100k15 + bagrad15 + nohs2515 + snap15 + wbrat15, data=dt1,family=NBI)
+######################################################
+# Get 3 models & summaries: Final model (4 IVs), full model 
+# & (all 12 IVs) & partial model (6 IVs)
+######################################################
+
+finmod<-gamlss(killed ~ log(pop15)+ emp15 +clinton16+ pov15, data=dt1,
+    family=NBI) # removed p>.01, now all vif<2.5
+midmod<-gamlss(killed ~ log(pop15)+ emp15 +clinton16+ pov15 + rural15 + 
+    bel10k15, data=dt1,family=NBI) # removed p>.05 and vif>10
+fullmod2<-gamlss(killed ~ log(pop15)+ emp15 +clinton16+ pov15 + rural15 + 
+    bel10k15 + mdhinc15+ab100k15 + bagrad15 + nohs2515 + snap15 + wbrat15, data=dt1,family=NBI)
 summary(finmod)
 summary(midmod)
 summary(fullmod2)
 
+######################################################
 # from beset, jason shumake, get theta and Log likelihood to calculate pseudo-R^2 for final model
+# https://github.com/jashu/beset/blob/master/R/r2d.R
+######################################################
 fintheta<-glm.nb(killed ~ log(pop15)+ emp15 +clinton16+ pov15, data=dt1)$theta
-llnull <- sum(stats::dnbinom(finmod$y, size = fintheta, mu = mean(finmod$y), log = TRUE)) # -7709.2
-llpred <- sum(stats::dnbinom(finmod$y, mu = predict(finmod,type="response"), size = fintheta, log = TRUE)) #-3423.69
-llsat <- sum(stats::dnbinom(finmod$y, mu = finmod$y, size = fintheta, log = TRUE)) # -2114.869
+llnull <- sum(stats::dnbinom(finmod$y, size = fintheta, mu = mean(finmod$y),
+      log = TRUE)) # -7709.2
+llpred <- sum(stats::dnbinom(finmod$y, mu = predict(finmod,type="response"), 
+      size = fintheta, log = TRUE)) #-3423.69
+llsat <- sum(stats::dnbinom(finmod$y, mu = finmod$y, size = fintheta, 
+      log = TRUE)) # -2114.869
 
+
+######################################################
 # Get Pseudo-R^2 for final model; compare with value from mcgv; 
+######################################################
 r2 <- 1-((llsat-llpred)/(llsat-llnull)) # 0.766, (Martin & Hall, 2016)
-summary(gam(killed~log(pop15)+emp15 +clinton16+pov15,data=data1,family=negbin(fintheta))) # 0.876, DevExp=76.6%
+summary(gam(killed~log(pop15)+emp15 +clinton16+pov15,data=data1,
+  family=negbin(fintheta))) # 0.876, DevExp=76.6%
 
+######################################################
 # get RMSE, lower is typically better
-(sum((predict(finmod,type="response")-finmod$y)^2)/length(finmod$y))^.5  # final model, 2.67
-(sum((predict(midmod,type="response")-midmod$y)^2)/length(midmod$y))^.5 # middle model, 2.70
-(sum((predict(fullmod2,type="response")-fullmod2$y)^2)/length(fullmod2$y))^.5 # full model, 2.58
+######################################################
+(sum((predict(finmod,type="response")-finmod$y)^2)/length(finmod$y))^.5  
+(sum((predict(midmod,type="response")-midmod$y)^2)/length(midmod$y))^.5 
+(sum((predict(fullmod2,type="response")-fullmod2$y)^2)/length(fullmod2$y))^.5 
 
+######################################################
 # Get VIF & correlation of predicted vs observed DV
+######################################################
 cor(finmod$y,predict(finmod,type="response"))
 cor(midmod$y,predict(midmod,type="response"))
 cor(fullmod2$y,predict(fullmod2,type="response"))
@@ -35,30 +61,39 @@ vif(finmod)
 vif(midmod)
 vif(fullmod2)
 
+######################################################
 # Get predicted zeros and predicted vs observed DV
+######################################################
 length(which(finmod$y==0))
 length(which(predict(finmod,type="response")<.2))
 length(which(predict(midmod,type="response")<.2))
 length(which(predict(fullmod2,type="response")<.2))
-c("Predicted Mean"=mean(predict(finmod,type="resp")),"Observed mean"=mean(dt1$killed))
-c("Predicted Mean"=mean(predict(midmod,type="resp")),"Observed mean"=mean(dt1$killed))
-c("Predicted Mean"=mean(predict(fullmod2,type="resp")),"Observed mean"=mean(dt1$killed))
+c("Predicted Mean"=mean(predict(finmod,type="resp")),
+  "Observed mean"=mean(dt1$killed))
+c("Predicted Mean"=mean(predict(midmod,type="resp")),
+  "Observed mean"=mean(dt1$killed))
+c("Predicted Mean"=mean(predict(fullmod2,type="resp")),
+  "Observed mean"=mean(dt1$killed))
 
 
+######################################################
 # Get plot of predicted vs observed, rootogram, residuals
+######################################################
 plot(finmod$y,predict(finmod,type="response"),xlim=c(0,50),ylim=c(0,50))
 plot(midmod$y,predict(midmod,type="response"),xlim=c(0,50),ylim=c(0,50))
 countreg::rootogram(finmod,max=50)
 countreg::rootogram(midmod,max=50)
 zz<-plot(finmod) # see below for individual graphs
 
-#######################
-# Plots for final model, similar to plot above, but axes are limited to show greater detail 
+######################################################
+# Diagnostic regression plots for final model, similar to plot above 
+######################################################
 
-par(mfrow=c(2,2), mar=par("mar")+c(0,1,0,0), col.axis="blue4", col.main="blue4", col.lab="blue4",  col="darkgreen", bg="beige" )
+par(mfrow=c(2,2), mar=par("mar")+c(0,1,0,0), col.axis="blue4", 
+    col.main="blue4", col.lab="blue4",  col="darkgreen", bg="beige" )
 
 plot(fitted(finmod),resid(finmod),xlim=c(0,4),xlab = "Fitted Values",  
-     ylab = "Quantile Residuals", main = "Against Fitted Values",frame.plot = TRUE)
+  ylab = "Quantile Residuals", main = "Against Fitted Values",frame.plot = TRUE)
 
 plot(resid(finmod), ylab = "Quantile Residuals",
      xlab = "Index", main = paste("Against Index"), frame.plot = TRUE) 
