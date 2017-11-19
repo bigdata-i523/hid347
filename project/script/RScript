@@ -21,13 +21,12 @@ dt1<-data1[complete.cases(data1),]
 # & (all 12 IVs) & partial model (6 IVs)
 ######################################################
 
-finmod<-gamlss(killed ~ log(pop15)+ emp15 + pov15, data=dt1,
-    family=NBI) # removed p>.01, now all vif<2.5
-midmod<-gamlss(killed ~ log(pop15)+ emp15 +clinton16+ pov15 + rural15 + 
-    bel10k15, data=dt1,family=NBI) # removed p>.05 and vif>10
-fullmod2<-gamlss(killed ~ log(pop15)+ emp15 +clinton16+ pov15 + rural15 + 
-    bel10k15 + mdhinc15+ab100k15 + bagrad15 + nohs2515 + 
-      snap15 + wbrat15, data=dt1,family=NBI)
+finmod<-gamlss(killed ~ log(pop15)+ emp15 + mdhinc15, data=dt1,
+    family=NBI) # removed p>.01
+midmod<-gamlss(killed ~ log(pop15)+ emp15 + rural15 + mdhinc15 + wbrat15, 
+    data=dt1,family=NBI) # removed p>0.1
+fullmod2<-gamlss(killed ~ log(pop15)+ emp15 + pov15 + rural15 + 
+    mdhinc15+ab100k15 + bagrad15 + nohs2515 + snap15 + wbrat15, data=dt1,family=NBI)
 summary(finmod)
 summary(midmod)
 summary(fullmod2)
@@ -37,7 +36,7 @@ summary(fullmod2)
 # from beset, jason shumake
 # https://github.com/jashu/beset/blob/master/R/r2d.R
 ######################################################
-fintheta<-glm.nb(killed ~ log(pop15)+ emp15 + pov15, data=dt1)$theta
+fintheta<-glm.nb(killed ~ log(pop15)+ emp15 + mdhinc15, data=dt1)$theta
 llnull <- sum(stats::dnbinom(finmod$y, size = fintheta, mu = mean(finmod$y),
       log = TRUE)) # -7709.2
 llpred <- sum(stats::dnbinom(finmod$y, mu = predict(finmod,type="response"), 
@@ -49,9 +48,9 @@ llsat <- sum(stats::dnbinom(finmod$y, mu = finmod$y, size = fintheta,
 ######################################################
 # Get Pseudo-R^2 for final model; compare with value from mcgv; 
 ######################################################
-r2 <- 1-((llsat-llpred)/(llsat-llnull)) # 0.766, (Martin & Hall, 2016)
-summary(gam(killed~log(pop15)+emp15 +pov15,data=dt1,
-  family=negbin(fintheta))) # 0.876, DevExp=76.6%
+r2 <- 1-((llsat-llpred)/(llsat-llnull)) # 0.767, (Martin & Hall, 2016)
+summary(gam(killed~log(pop15)+emp15 +mdhinc15,data=dt1,
+  family=negbin(fintheta))) # 0.874, DevExp=76.7%
 
 ######################################################
 # get RMSE, lower is typically better
