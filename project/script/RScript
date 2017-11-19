@@ -17,8 +17,8 @@ data1 <- read.csv(text = getdata)
 dt1<-data1[complete.cases(data1),]
 
 ######################################################
-# Get 3 models & summaries: Final model (4 IVs), full model 
-# & (all 12 IVs) & partial model (6 IVs)
+# Get 3 models & summaries: Final model (3 IVs), full model 
+# & (all 10 IVs) & partial model (6 IVs)
 ######################################################
 
 finmod<-gamlss(killed ~ log(pop15)+ emp15 + mdhinc15, data=dt1,
