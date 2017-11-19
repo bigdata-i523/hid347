@@ -7,13 +7,11 @@ library(readr);library(car); library(mgcv);library(RCurl)
 ######################################################
 # Get data
 # demographic variables from American Community Survey (US Census, 5-yr estimate, 2015)
-# https://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml
-# voting data from MKearney
-# https://raw.githubusercontent.com/mkearney/presidential_election_county_results_2016/master/pres.elect16.results.dec9.csv
+#  https://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml
+# voting data from https://raw.githubusercontent.com/mkearney/presidential_election_county_results_2016/master/pres.elect16.results.dec9.csv
 # Original police violence data from https://mappingpoliceviolence.org/
 # police killing data had to be extensively cleaned & corrected (60 bad counties)
 ######################################################
-
 getdata <- getURL("https://raw.githubusercontent.com/bigdata-i523/hid347/master/project/script/data1.csv")
 data1 <- read.csv(text = getdata)
 dt1<-data1[complete.cases(data1),]
@@ -23,21 +21,23 @@ dt1<-data1[complete.cases(data1),]
 # & (all 12 IVs) & partial model (6 IVs)
 ######################################################
 
-finmod<-gamlss(killed ~ log(pop15)+ emp15 +clinton16+ pov15, data=dt1,
+finmod<-gamlss(killed ~ log(pop15)+ emp15 + pov15, data=dt1,
     family=NBI) # removed p>.01, now all vif<2.5
 midmod<-gamlss(killed ~ log(pop15)+ emp15 +clinton16+ pov15 + rural15 + 
     bel10k15, data=dt1,family=NBI) # removed p>.05 and vif>10
 fullmod2<-gamlss(killed ~ log(pop15)+ emp15 +clinton16+ pov15 + rural15 + 
-    bel10k15 + mdhinc15+ab100k15 + bagrad15 + nohs2515 + snap15 + wbrat15, data=dt1,family=NBI)
+    bel10k15 + mdhinc15+ab100k15 + bagrad15 + nohs2515 + 
+      snap15 + wbrat15, data=dt1,family=NBI)
 summary(finmod)
 summary(midmod)
 summary(fullmod2)
 
 ######################################################
-# from beset, jason shumake, get theta and Log likelihood to calculate pseudo-R^2 for final model
+# get theta and Log likelihood to calculate pseudo-R^2 for final model
+# from beset, jason shumake
 # https://github.com/jashu/beset/blob/master/R/r2d.R
 ######################################################
-fintheta<-glm.nb(killed ~ log(pop15)+ emp15 +clinton16+ pov15, data=dt1)$theta
+fintheta<-glm.nb(killed ~ log(pop15)+ emp15 + pov15, data=dt1)$theta
 llnull <- sum(stats::dnbinom(finmod$y, size = fintheta, mu = mean(finmod$y),
       log = TRUE)) # -7709.2
 llpred <- sum(stats::dnbinom(finmod$y, mu = predict(finmod,type="response"), 
@@ -50,7 +50,7 @@ llsat <- sum(stats::dnbinom(finmod$y, mu = finmod$y, size = fintheta,
 # Get Pseudo-R^2 for final model; compare with value from mcgv; 
 ######################################################
 r2 <- 1-((llsat-llpred)/(llsat-llnull)) # 0.766, (Martin & Hall, 2016)
-summary(gam(killed~log(pop15)+emp15 +clinton16+pov15,data=data1,
+summary(gam(killed~log(pop15)+emp15 +pov15,data=dt1,
   family=negbin(fintheta))) # 0.876, DevExp=76.6%
 
 ######################################################
