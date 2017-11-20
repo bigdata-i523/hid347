@@ -29,7 +29,7 @@
 
 
 \begin{abstract}
-With the rise of camera phones that allows citizens to videotape law enforcement brutality against citizens, and the ability to immediately make those videos public through social media, there has been an increased awareness of police killings of citizens, and a number of systematic attempts to document these events, since there is no government database that has been shown to be credible on this issue. These events can be mapped at the county level (3,143 counties in the US are listed in the 2015 Census Tiger shapefiles) with the open source software QGIS.  Further, demographic and economic data gathered by the Census at the county level (5-year estimates as of 2015 with the American Community Survey) can be collected and tested against the police-killings data to determine if a regression model can be used to describe a significant pattern among these variables. 
+With the rise of camera phones that allows citizens to videotape law enforcement brutality against citizens, and the ability to immediately make those videos public through social media, there has been an increased awareness of police killings of citizens.  With this new data there have been a number of systematic attempts to document these events, from journalists, to academics, to activists, since there is no credible government database documenting this problem. These events can be mapped at the county level with the open source software QGIS.  Further, demographic and economic data gathered by the Census at the county level can be collected and tested against the police-killings to determine if a regression model can be used to describe a pattern among these variables. 
 \end{abstract}
 
 \keywords{i523, hid347, police brutality, multivariate regression, gis mapping, census, zero-inflated models}
@@ -45,8 +45,13 @@ With the rise of camera phones that allows citizens to videotape law enforcement
 \end{figure}
 
 \begin{figure}
+\includegraphics[width=1.0\textwidth]{images/figure4.jpg}
+\caption{Left: Histogram of the number of county residents killed by police.  This histogram shows a maximum of eight per county killed by police, while the actual maximum is 266.  However, there are only 120 observations where this value is above 8.  This view gives a better depiction of the data.  Right: Scatterplot of the total county population versus the total killed by police in that county.  The red line is a regression prediction line for these two variables.}
+\end{figure}
+
+\begin{figure}
 \includegraphics[width=1.0\textwidth]{images/figure2.jpg}
-\caption{Plots of predicted versus observed, and rootogram of predicted, for the final regression model, negative binomial, three independent variables: population (log), employment and median income.}
+\caption{Left: Scatterplot of predicted versus observed counts of residents killed by police per county. Right: Rootogram--fit of the final regression model: negative binomial with three independent variables (log of population, employment and median income).  The red line can be interpreted as the observed values.  Bars that are hanging below the zero-line are underfit for that bin, and those above the line are overfit for that bin.}
 \end{figure}
 
 \begin{figure}
