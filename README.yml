@@ -45,6 +45,6 @@ project:
         Census 2015 5-year estimate (ACS)-3144 counties, Killings of citizens by police in the US 2013-Oct 2017, election results by county US 2016 
     url: https://github.com/bigdata-i523/hid347/tree/master/project
     type: project
-    status: 
+    status: Nov 20 17 25%
     chapter: Social Science
     keywords: police brutality, regression, gis mapping, census, zero-inflated models
