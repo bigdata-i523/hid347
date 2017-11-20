@@ -1,7 +1,7 @@
 This folder contains the following 5 files:
 
  * RScript: 
-    R-script used for the comparative regression analysis of 3 models all using a negative binomial general linear model
+   - R-script used for the comparative regression analysis of 3 models all using a negative binomial general linear model.  It can be opened in R.  All relevant tests and plots are contained in the R-script
     
  * QGISScriptKilledByPolice.py:  >
    - This python file can be opened in the Python Console of QGIS.  It will produce a county-level map of those killed by police in the US from 2013-Oct 2017.  The data is automatically imported, unzipped and processed.
