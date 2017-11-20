@@ -82,11 +82,35 @@ c("Predicted Mean"=mean(predict(midmod,type="resp")),
 c("Predicted Mean"=mean(predict(fullmod,type="resp")),
   "Observed mean"=mean(dt1$killed))
 
+######################################################
+# Get histogram of DV and scatterplot of DV versus population
+######################################################
+jpeg("hist.jpg")
+par(mfrow=c(1,2))
+hist(finmod$y,breaks=c(0,1,2,3,4,5,6,7,8,10,15,20,50,300),xlim=c(0,8),
+     main="Histogram of Residents \n Killed by Police Per County",
+     xlab="Count of Residents Killed by Police Per County") 
+#120 observations above 8, not shown here
+plot(dt1$pop15,finmod$y,ylim=c(0,100),xlim=c(0,6000000),
+     main="Scatterplot of Population vs. \n Residents Killed by Police",
+     xlab="Total County Population",ylab="Residents Killed by Police")
+abline(lm(finmod$y~dt1$pop15),col="red")
+dev.off()
 
 ######################################################
 # Get plot of predicted vs observed, rootogram, residuals
 ######################################################
-plot(finmod$y,predict(finmod,type="response"),xlim=c(0,50),ylim=c(0,50))
+jpeg("diagnostics.jpg")
+par(mfrow=c(1,2))
+plot(finmod$y,predict(finmod,type="response"),xlim=c(0,50),ylim=c(0,50),
+     main="Predicted vs Observed \n Killed by Police",
+     ylab="Predicted Count Killed by Police", xlab="Observed Count Killed by Police")
+abline(finmod$y,predict(finmod,type="response"),col="red")
+countreg::rootogram(finmod,max=50,main="Rootogram for Model Fit",
+      xlab="Bins of Count of Residents Killed by Police", 
+      ylab="Frequency (sqrt)")
+dev.off()
+
 plot(midmod$y,predict(midmod,type="response"),xlim=c(0,50),ylim=c(0,50))
 countreg::rootogram(finmod,max=50)
 countreg::rootogram(midmod,max=50)
@@ -95,7 +119,7 @@ zz<-plot(finmod) # see below for individual graphs
 ######################################################
 # Diagnostic regression plots for final model, similar to plot above 
 ######################################################
-
+jpeg("residuals.jpg")
 par(mfrow=c(2,2), mar=par("mar")+c(0,1,0,0), col.axis="blue4", 
     col.main="blue4", col.lab="blue4",  col="darkgreen", bg="beige" )
 
@@ -121,3 +145,4 @@ qqnorm(resid(finmod), main = "Normal Q-Q Plot",
        frame.plot = TRUE, 
        col="darkgreen")
 lines(resid(finmod), resid(finmod), col="red" , lwd=.4, cex=.4 )
+dev.off()
