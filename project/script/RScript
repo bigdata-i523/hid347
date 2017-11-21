@@ -32,7 +32,7 @@ summary(fullmod)
 
 
 ######################################################
-# Get R^2 and Deviance Explained from mcgv::gam 
+# Get theta (negative binomial factor), R^2 and Deviance Explained 
 ######################################################
 fintheta<-glm.nb(killed ~ log(pop15)+emp15 +mdhinc15, data=dt1)$theta
 fulltheta<-glm.nb(killed ~ log(pop15)+ emp15 + rural15 + mdhinc15 + 
@@ -48,7 +48,7 @@ summary(gam(killed~log(pop15)+ emp15 + pov15 + rural15 +
   family=negbin(fintheta))) # 0.879, DevExp=76.8%
 
 ######################################################
-# get RMSE, lower is typically better
+# get RMSE; lower is typically better
 ######################################################
 (sum((predict(finmod,type="response")-finmod$y)^2)/length(finmod$y))^.5  
 (sum((predict(midmod,type="response")-midmod$y)^2)/length(midmod$y))^.5 
@@ -57,15 +57,15 @@ summary(gam(killed~log(pop15)+ emp15 + pov15 + rural15 +
 ######################################################
 # Get VIF & correlation of predicted vs observed DV
 ######################################################
-cor(finmod$y,predict(finmod,type="response"))
-cor(midmod$y,predict(midmod,type="response"))
-cor(fullmod$y,predict(fullmod,type="response"))
 vif(finmod)
 vif(midmod)
 vif(fullmod)
+cor(finmod$y,predict(finmod,type="response"))
+cor(midmod$y,predict(midmod,type="response"))
+cor(fullmod$y,predict(fullmod,type="response"))
 
 ######################################################
-# Get predicted zeros and predicted vs observed DV
+# Get predicted zeros and predicted vs observed DV means
 ######################################################
 length(which(finmod$y==0))
 length(which(predict(finmod,type="response")<.5))
