@@ -14,12 +14,12 @@ library(readr);library(car); library(mgcv);library(RCurl)
 getdata <- getURL("https://raw.githubusercontent.com/bigdata-i523/hid347/master/project/script/data1.csv")
 data1 <- read.csv(text = getdata)
 dt1<-data1[complete.cases(data1),]  # Only 2 missing cases
+summary(dt1)
 
 ######################################################
 # Get 3 models & summaries: Final model (3 IVs), full model 
 # & (all 10 IVs) & partial model (6 IVs)
 ######################################################
-
 finmod<-gamlss(killed ~ log(pop15)+ emp15 + mdhinc15, data=dt1,
     family=NBI) # removed p>.01, no vif>2
 midmod<-gamlss(killed ~ log(pop15)+ emp15 + rural15 + mdhinc15 + wbrat15, 
@@ -30,26 +30,22 @@ summary(finmod)
 summary(midmod)
 summary(fullmod)
 
-######################################################
-# get theta and Log likelihood to calculate pseudo-R^2 for final model
-# from beset, jason shumake
-# https://github.com/jashu/beset/blob/master/R/r2d.R
-######################################################
-fintheta<-glm.nb(killed ~ log(pop15)+ emp15 + mdhinc15, data=dt1)$theta
-llnull <- sum(stats::dnbinom(finmod$y, size = fintheta, mu = mean(finmod$y),
-      log = TRUE)) # -7709.2
-llpred <- sum(stats::dnbinom(finmod$y, mu = predict(finmod,type="response"), 
-      size = fintheta, log = TRUE)) #-3423.69
-llsat <- sum(stats::dnbinom(finmod$y, mu = finmod$y, size = fintheta, 
-      log = TRUE)) # -2114.869
-
 
 ######################################################
-# Get Pseudo-R^2 for final model; compare with value from mcgv; 
+# Get R^2 and Deviance Explained from mcgv::gam 
 ######################################################
-r2 <- 1-((llsat-llpred)/(llsat-llnull)) # 0.766, (Martin & Hall, 2016)
+fintheta<-glm.nb(killed ~ log(pop15)+emp15 +mdhinc15, data=dt1)$theta
+fulltheta<-glm.nb(killed ~ log(pop15)+ emp15 + rural15 + mdhinc15 + 
+  wbrat15, data=dt1)$theta
+fulltheta2<-glm.nb(killed ~ log(pop15)+ emp15 + pov15 + rural15 + 
+  mdhinc15+ab100k15 + bagrad15 + nohs2515 + snap15 + wbrat15, data=dt1)$theta
 summary(gam(killed~log(pop15)+emp15 +mdhinc15,data=dt1,
   family=negbin(fintheta))) # 0.874, DevExp=76.6%
+summary(gam(killed~log(pop15)+ emp15 + rural15 + mdhinc15 + wbrat15,data=dt1,
+  family=negbin(fintheta))) # 0.865, DevExp=76.7%
+summary(gam(killed~log(pop15)+ emp15 + pov15 + rural15 + 
+  mdhinc15+ab100k15 + bagrad15 + nohs2515 + snap15 + wbrat15,data=dt1,
+  family=negbin(fintheta))) # 0.879, DevExp=76.8%
 
 ######################################################
 # get RMSE, lower is typically better
@@ -72,9 +68,9 @@ vif(fullmod)
 # Get predicted zeros and predicted vs observed DV
 ######################################################
 length(which(finmod$y==0))
-length(which(predict(finmod,type="response")<.2))
-length(which(predict(midmod,type="response")<.2))
-length(which(predict(fullmod,type="response")<.2))
+length(which(predict(finmod,type="response")<.5))
+length(which(predict(midmod,type="response")<.5))
+length(which(predict(fullmod,type="response")<.5))
 c("Predicted Mean"=mean(predict(finmod,type="resp")),
   "Observed mean"=mean(dt1$killed))
 c("Predicted Mean"=mean(predict(midmod,type="resp")),
