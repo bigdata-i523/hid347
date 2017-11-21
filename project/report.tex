@@ -109,22 +109,28 @@ Other possible models are available for data with a mass at zero, for example, a
 
 One of the assumptions of a Poisson distribution is that the mean and dispersion are equivalent. \cite{fox15}  A model with a variance greater than the mean is considered over-dispersed, which implies it is a better candidate for a negative binomial regression approach.  As can be seen in Table 1, the mean of the count killed by police is 1.74, and the variance is 57.0 (square of standard deviation, 7.55).  This data is clearly over-dispersed, and a good candidate for negative binomial regression.
 
-Three regression models were created: the full model, which includes all of ten independent variables; the partial model, which includes only five independent variables; and the final model, which includes the best three predictors.  The coefficients and p-values of these models can be found in Table 2.  
-
-
-
 \section{Findings}
-
+Three regression models were created: the full model, which includes all of ten independent variables; the partial model, which includes only five independent variables; and the final model, which includes the best three predictors.  The coefficients and p-values of these models can be found in Table 2, along with a  number of diagnostic criteria.  From the full model, all of the non-significant variables were removed to generate the partial model.  From the partial model, both variables that were less than p=0.10 were removed from the model, leaving three predictor variables, all of which were significant to p$\leq$0.001.  By all measures, the three models have very similar model fit and diagnostic criteria (AIC, R-square, correlation between predicted and observed, RMSE, predicted mean of outcome variable, etc.).  The variance inflation factor was checked for each, and while significant problems were detected for the full model (max VIF=34.5), those problems were eliminated in both of the smaller models.  The final model seems like the best candidate since it is the simplest, with only three predictor variables, and having equivalent goodness-of-fit values as the more complex models. 
 
 \begin{table}
 \includegraphics[width=1.0\textwidth]{images/table2.jpg}
 \caption{Regression and diagnostic results from all three models.  "Zeros Pred" are the number of counties where no person is predicted to be killed by police, calculated not at exact zero, but any value less than 0.5.  "Killed Pred" is the mean number of predicted people killed by police in each county.}
 \end{table}
 
+The final regression model indicates a strong relationship between the dependent variable, the count of people killed by police by county, and the three predictor variables, population of the county, employment rates in that county, and county median income.  The coefficients indicate both strength and direction of the relationship, and can be used to create a prediction equation. \\ 
+
+Killed by Police = -10.01 + 1.092 * log(Population) - 0.0185 * Employment Rate - 0.000015 * Median Income\\
+
+This implies that the higher the county population, the higher the risk of being killed by police, the higher the employment rate in the county, the lower the risk of being killed by police, and the higher the county median income, the lower the risk of being killed by police.  According to output from the R regression analysis, this three-variable model explains 76.6\% of the variance of the dependent variable, and the predicted vs observed killings by police have a correlation of 0.936.  The mean predicted killings are 1.775 per county, while the observed killings were 1.739.  This model predicts 1656 counties will have approximately zero killings (less than 0.5), while the actual number of counties with no killings was 1827.
+
+Figures 3 shows two R graphs supporting the conclusion that the final model is a good fit.  The left plot of predicted versus observed killings by police per county, with the red regression line of just these two variables, shows the strong relationship between them.  The rootogram on the right shows that few bins of predicted outcomes are significantly divergent from the observed values.  A rootogram is interpreted by the {\cm hanging} bars--bars hanging above the zero-line are over-fit, while bars hanging below the line are under-fit. \cite{rootogram}  The closeness of the bars to the zero-line indicate a relatively good fit.
+
 \begin{figure}
 \includegraphics[width=1.0\textwidth]{images/figure3.jpg}
 \caption{Left: Scatter plot of predicted versus observed counts of residents killed by police per county. Right: Rootogram--fit of the final regression model: negative binomial with three independent variables (log of population, employment and median income).  The red line can be interpreted as the observed values.  Bars that are hanging below the zero-line are under-fit for that bin, and those above the line are over-fit for that bin.}
 \end{figure}
+
+In addition to goodness of fit, regression also requires that residuals meet basic assumptions.  Figure 4 shows several standard diagnostic plots indicating that these assumptions are met.  The residuals versus fitted values plot is interpreted as being problematic if a pattern emerges from the residuals, either above or below the zero-line.  In this case, no pattern is apparent--the residuals seem equally and randomly scattered above and below the line.  Similarly, the plot of residuals versus index shows a similar result, indicating the regression residuals assumption is met.  Finally, the bottom two plots, more residuals plots, show the same.  For example, the {\em Normal Q-Q Plot} would indicate a problem if a significant number of dots were straying from the main central line--in this case they are almost all on the line. \cite{hocking}
 
 \begin{figure}
 \includegraphics[width=1.0\textwidth]{images/figure4.jpg}
