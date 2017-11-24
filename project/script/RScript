@@ -114,6 +114,7 @@ zz<-plot(finmod) # see below for individual graphs
 
 ######################################################
 # Diagnostic regression plots for final model, similar to plot above 
+# modified from gamlss::plot
 ######################################################
 jpeg("residuals.jpg")
 par(mfrow=c(2,2), mar=par("mar")+c(0,1,0,0), col.axis="blue4", 
