@@ -1,6 +1,6 @@
 library(readr);library(ggplot2);library(grid);library(RCurl)
 
-getdata <- getURL("https://raw.githubusercontent.com/bigdata-i523/hid347/master/Experiment/Graphing.csv")
+getdata <- getURL("https://raw.githubusercontent.com/bigdata-i523/hid347/master/experiment/graphing.csv")
 Graphing <- read.csv(text = getdata, sep="\t")
 
 Graphing$StudGrpF <- as.factor(Graphing$StudGrp)
