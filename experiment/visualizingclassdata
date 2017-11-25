@@ -1,0 +1,45 @@
+library(readr);library(ggplot2);library(grid);library(RCurl)
+
+getdata <- getURL("https://raw.githubusercontent.com/bigdata-i523/hid347/master/Experiment/Graphing.csv")
+Graphing <- read.csv(text = getdata, sep="\t")
+
+Graphing$StudGrpF <- as.factor(Graphing$StudGrp)
+
+# Preparing data for Stacked Barplots
+# Stacked plot help from https://stackoverflow.com/questions/15910987/stacking-multiple-columns-on-a-geom-bar-in-ggplot2
+Graphing$category <- gsub("\\d","",Graphing$Chapter)
+Graphing$category2 <- gsub("\\d","",Graphing$StudGrp)
+mdat <- melt(Graphing, id.vars = c("category","Chapter"),
+              measure.vars=c("StudGitChange","InstrGitChange"))
+mdat2 <- melt(Graphing, id.vars = c("category2","StudGrp"),
+             measure.vars=c("StudGitChange","InstrGitChange"))
+
+# Histogram of Time to Correct
+jpeg("histogram1.jpg")
+hist(Graphing$TimeCorrect,main="Histogram of Time to Correct",xlab="Time to Correct")
+dev.off()
+
+# Scatterplot of Student Changes of Github vs. Instructor Changes of Github by Color of Student Group
+jpeg("scatterplot1.jpg")
+plot(Graphing$StudGitChange,Graphing$InstrGitChange, col=c("red","blue","peru")[Graphing$StudGrp], pch=16, 
+     main="Scatterplot of Student Changes to \n Github vs Instructor Changes \n to Github by Color of Student Group",
+     ylab="Instructor Changes of Github",xlab="Student Changes of Github") 
+    legend(x="topright", legend = levels(Graphing$StudGrpF), col=c("red","blue","peru"), pch=16)
+dev.off()
+
+# Stacked Plot of Student & Instructor Github Changes by Chapter and Student Group
+jpeg("barplot2.jpg")
+ggplot(mdat, aes(Chapter, value, fill = variable)) +
+    geom_bar(position = "stack", stat = "identity") +
+  theme(axis.text.x=element_text(angle = 45, hjust = 1)) +
+  labs(title="Stacked Plot of Student and Instr \n Github Changes by Chapter")+
+xlab("Chapter")
+dev.off()
+
+jpeg("barplot1.jpg")
+ggplot(mdat2, aes(StudGrp, value, fill = variable)) +
+  geom_bar(position = "stack", stat = "identity") +
+  labs(title="Stacked Barplot of Student and Instructor \n Github Changes by Student Group") +
+  xlab("Student Group")
+dev.off()
+
