@@ -6,13 +6,21 @@
 * 8/30 Read all of the class overview, watched the Intro videos, accessed Piazza
 * 8/30 Signed up for Github, Chameleon, Futuresystems
 * 9/15 Started this class notebook on Github
+* 10/7 Signed up for Sharelatex account
+* 10/7 With help from professor, learned how to use Sharelatex, transfer a MS Word document to latex, and connect Jabref citations to the latex document, then transfer all of these files to github
+* 11/25 Significantly updated this class notebook
 
 # Theory
 
-* 9/5-9/7 Read & watched all videos in these sections (3.1,3.2,3.10): Introduction, Overview, Web Search/Text Mining
-* 9/17-9/18 Watched all videos in 3.3 & 3.7: Big Data Use Cases & Radar Case Studies
-* 9/23-24 Watched all videos in 3.4 & 3.6: Physics & Healthcare
-* 10/13-10/14 Finished watching all remaining theory videos: Sensors, Commerce, Sports
+* 9/5: Read & watched all videos in 3.1: Introduction
+* 9/6 Read & watched all videos in 3.2: Overview
+* 9/7 Read & watched all videos in 3.10: Web Search/Text Mining
+* 9/17 Watched all videos in 3.3: Big Data Use Cases
+* 9/18 Watched all videos in 3.7: Radar Case Studies
+* 9/23 Watched all videos in 3.4: Physics
+* 9/24 Watched all videos in 3.6: Healthcare
+* 10/13 Watched all videos in Sensors, Commerce
+* 10/14 Finished watching all remaining theory videos: Sports
 
 # Practice
 
@@ -25,12 +33,18 @@
 * 11/9 Discovered Paper 2 did not compile.  Had to upload several files to Github account.  Professor also placed some files
 * 11/9 Placed several technical files on Github account for the final project so that it would compile--copied from Paper 2 files
 * 11/10-11/11 Learned new regression model for final project.  Had not previously done work with 'count' data or 'mass at zero' data
-* 11/12-11/16 Finalized regression analysis model & regression diagnostics using R.  Worked in QGIS to create mapping of homicides
-* 11/18-11/19 Coded R-script to automatically perform all of the statistical analyses for the final project, uploaded to Github as R-script
+* 11/12-11/15 Worked on regression analysis model & regression diagnostics using RStudio
+* 11/12-11/16 Collected and read resources on 'count' data analysis
+* 11/16-11/17 Had to start regression analysis from the beginning. Had assumed I needed to use "zero-inflated negative binomial" model, however, realized this was theoretically unsound.  Switched to simple negative binomial in GLM
+* 11/16 Worked in QGIS to create mapping of homicides
+* 11/17 Coded R-script to automatically perform all of the statistical analyses for the final project
+* 11/18 Uploaded Final Project R-script to Github as RScript, data as data1.csv, variables as variables, and list of original data that had to be cleaned as baddata 
 * 11/19 Working in Ubuntu using Virtualbox was incredibly frustrating.  Installed Python 2.7 and 3.6 directly onto Windows, learned how to use Powershell to access Python
 * 11/20 Learned how to use PYQGIS--Python console in QGIS
-* 11/20-11/21 Coded Python script to automatically create the QGIS map for the final project, uploaded to Github as .py
-* 11/24 Submitted my first experiment, visualizing class data, and loaded to Github as R-Script
+* 11/20 Coded Python script to automatically create the QGIS map for the final project
+* 11/20 Learned how to use Box at IU.  Shapefile was too big to upload to Github, so shapefile and dbf file were zipped and uploaded to Box
+* 11/21 Uploaded Python script to Github as QGISScriptKilledByPolice.py
+* 11/24 Submitted my first experiment, visualizing class data ("Classification 2"), and loaded to Github as R-Script
 
 # Writing
 
@@ -39,15 +53,18 @@
 * 10/5 Learned how to use Jabref
 * 10/4-10/6 Found 6 additional articles useful for the paper.
 * 10/5-10/7 Wrote Paper 1.  
-* 10/7 With help from professor, learned how to use Sharelatex, transfer a MS Word document to latex, & connect Jabref citations to the latex document
 * 10/8 Submitted final paper to Github
+* 10/11 Submitted a review of HID311's Paper 1 to Piazza for discussion assignment
 * 10/20-21  Fixed noted issues with Paper 1.  Created folder for Paper 2
-* 10/25-29  Explored Final Project topic and was approved.  Gathered resources for Paper 2 and Final Project.  
-* 11/1-11/4 Finished Paper 2
+* 10/25-26  Explored Final Project topic.  Gathered resources for Paper 2 
+* 10/26 Had Paper 2 topic approved
+* 10/27 Had Final Project topic approved
+* 10/27-10/31 Gathered resources for Paper 2 and Final Project.  
+* 11/1-11/4 Wrote Paper 2
 * 11/5 Submitted Paper 2
 * 11/6-11/16 Gathered literature review for Final Project  
 * 11/17-11/22 Wrote the final paper
-* 11/24 Finished and submitted final paper to Github
+* 11/24 Finished final draft of Final Project and submitted to Github.  Set status=99% on yaml file
 
 # Location
 * Address: 425 University Blvd, Indianapolis, IN 46202
