@@ -13,4 +13,4 @@ This folder contains the following 5 files:
    - A list of the variables used and their definitions
     
  * baddata: 
-   - A list of the 60 corrected counties from MappingPoliceViolence--the dependent variable
+   - The 60 original counties that had to be corrected from MappingPoliceViolence (the original data before being corrected)--the dependent variable
