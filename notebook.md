@@ -68,6 +68,8 @@
 * 11/6-11/16 Gathered literature review for Final Project  
 * 11/17-11/22 Wrote the final paper on Sharelatex
 * 11/24 Finished final draft of Final Project and submitted to Github.  Set status=99% on yaml file
+* 11/28-29 Made final changes to Final Project and set status=100% to yaml file
+
 
 # Location
 * Address: 425 University Blvd, Indianapolis, IN 46202
