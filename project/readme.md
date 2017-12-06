@@ -1,1 +1,1 @@
-Analyzing Police Killing of Citizens in the United States
+Killings by Police in the United States
