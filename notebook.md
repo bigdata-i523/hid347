@@ -9,6 +9,7 @@
 * 10/7 Signed up for Sharelatex account
 * 10/7 With help from professor, learned how to use Sharelatex, transfer a MS Word document to latex, and connect Jabref citations to the latex document, then transfer all of these files to github
 * 11/25 Significantly updated this class notebook
+* 12/5 My paper did not load into the proceedings.  Change title listed in yaml file to match title of loaded paper.  Created readme file with paper title as content.
 
 # Theory
 
